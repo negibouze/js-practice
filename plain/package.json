@@ -1,0 +1,26 @@
+{
+  "name": "plain",
+  "version": "0.0.1",
+  "description": "js practice",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --env.production",
+    "build:dev": "webpack",
+    "clean": "rimraf ./public/assets/js",
+    "rebuild": "npm-run-all -s clean build",
+    "rebuild:dev": "npm-run-all -s clean build:dev"
+  },
+  "author": "Yoshiaki Itakura (https://github.com/negibouze)",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "npm-run-all": "^4.1.2",
+    "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
