@@ -56,7 +56,8 @@ class Game extends Component {
         tap
       }]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
+      xIsNext: !this.state.xIsNext,
+      orderIsAsc: true
     });
   }
 
@@ -64,6 +65,12 @@ class Game extends Component {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0
+    })
+  }
+
+  toggleOrder() {
+    this.setState({
+      orderIsAsc: !this.state.orderIsAsc
     })
   }
 
@@ -82,6 +89,8 @@ class Game extends Component {
       );
     });
     const status = winner ? `Winner: ${winner}` : `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+    const order = this.state.orderIsAsc ? '▲' : '▼';
+    const sortedList = this.state.orderIsAsc ? moves : moves.reverse();
 
     return (
       <div className="game">
@@ -93,7 +102,8 @@ class Game extends Component {
         </div>
         <div className="game-info">
           <div className="status">{status}</div>
-          <ol>{moves}</ol>
+          <button onClick={() => this.toggleOrder()}>order {order}</button>
+          <ol>{sortedList}</ol>
         </div>
       </div>
     );
