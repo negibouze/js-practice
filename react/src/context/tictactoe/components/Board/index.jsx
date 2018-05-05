@@ -9,6 +9,7 @@ class Board extends Component {
       <Square
         key={key}
         value={this.props.squares[i]}
+        highlight={this.props.winningLine.includes(i)}
         onClick={() => this.props.onClick(i)}
       />
     );

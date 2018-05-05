@@ -16,7 +16,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return {
+        name: squares[a],
+        line: lines[i]
+      }
     }
   }
   return null;
@@ -88,7 +91,7 @@ class Game extends Component {
         </li>
       );
     });
-    const status = winner ? `Winner: ${winner}` : `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+    const status = winner ? `Winner: ${winner.name}` : `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
     const order = this.state.orderIsAsc ? '▲' : '▼';
     const sortedList = this.state.orderIsAsc ? moves : moves.reverse();
 
@@ -97,6 +100,7 @@ class Game extends Component {
         <div className="game-board">
           <Board
             squares={current.squares}
+            winningLine={winner ? winner.line : []}
             onClick={(i) => this.handleClick(i)}
           />
         </div>
