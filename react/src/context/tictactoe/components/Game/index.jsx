@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Board from '../Board';
 import './Game';
 
+function hasNullElements(array) {
+  return array.includes(null);
+}
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -81,7 +85,8 @@ class Game extends Component {
     const history = this.state.history;
     const stepNumber = this.state.stepNumber;
     const current = history[stepNumber];
-    const winner = calculateWinner(current.squares);
+    const squares = current.squares;
+    const winner = calculateWinner(squares);
     const moves = history.map((step, move) => {
       const text = (move ? `Go to move #${move}` : 'Go to game start') + ` (col: ${step.tap.col}, row: ${step.tap.row})`;
       const desc = stepNumber === move ? <b>{text}</b> : text;
@@ -91,7 +96,10 @@ class Game extends Component {
         </li>
       );
     });
-    const status = winner ? `Winner: ${winner.name}` : `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+    const status = ((winner) => {
+      if (winner) { return `Winner: ${winner.name}` };
+      return hasNullElements(squares) ? `Next player: ${this.state.xIsNext ? 'X' : 'O'}` : 'The game is a draw.';
+    })(winner);
     const order = this.state.orderIsAsc ? '▲' : '▼';
     const sortedList = this.state.orderIsAsc ? moves : moves.reverse();
 
