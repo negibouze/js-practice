@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import './App'
+
 export default {
   name: "App"
 }

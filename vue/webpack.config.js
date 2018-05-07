@@ -56,12 +56,9 @@ module.exports = (env) => {
                 { test: /\.vue$/, exclude: /node_modules/, loader: 'vue-loader', options: {} },
                 { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
                 {
-                    test: /\.styl$/, exclude: /node_modules/,
+                    test: /\.(styl|stylus)$/, exclude: /node_modules/,
                     use: [
-                        {
-                            loader: 'vue-style-loader',
-                            options: {  }
-                        },
+                        'vue-style-loader',
                         {
                             loader: 'css-loader',
                             options: {
@@ -121,7 +118,9 @@ module.exports = (env) => {
         },
         resolve: {
             extensions: ['*', '.js', '.vue', '.styl'],
-            alias: {}
+            alias: {
+                'vue$': 'vue/dist/vue.esm.js'                
+            }
         }
     }
 }
