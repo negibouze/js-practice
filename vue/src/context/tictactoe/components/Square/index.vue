@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import './Square'
+
 export default {
   name: "Square"
 }
