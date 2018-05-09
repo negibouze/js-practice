@@ -47,7 +47,11 @@ export default {
   data: function() {
     return {
       history: [{
-        squares: Array(9).fill(null)
+        squares: Array(9).fill(null),
+        tap: {
+          col: 0,
+          row: 0
+        }
       }],
       current: 0,
       xIsNext: true
@@ -56,6 +60,9 @@ export default {
   computed: {
     squares: function() {
       return this.history[this.current].squares
+    },
+    edgeLength: function() {
+      return Math.sqrt(this.squares.length)
     },
     player: function() {
       return this.xIsNext ? 'X' : 'O'
@@ -66,7 +73,7 @@ export default {
     },
     moves: function() {
       return this.history.map((step, move) => {
-        return move ? `Go to move #${move}` : 'Go to game start'
+        return (move ? `Go to move #${move}` : 'Go to game start') + ` (col: ${step.tap.col}, row: ${step.tap.row})`;
       })
     }
   },
@@ -77,13 +84,19 @@ export default {
         return;
       }
       squares[i] = this.player
-      this.history = this.history.slice(0, (this.current + 1)).concat([{
-        squares: squares
+      const tap = ((i) => {
+        const v = i === 0 ? [1, 1] : [(i % this.edgeLength) + 1, parseInt(i / this.edgeLength) + 1];
+        return { col: v[0], row: v[1] }
+      })(i);
+      this.history = this.history.concat([{
+        squares,
+        tap
       }])
       this.current = this.history.length - 1      
       this.xIsNext = !this.xIsNext
     },
     jumpTo: function(i) {
+      this.history = this.history.slice(0, (i + 1))
       this.current = i
       this.xIsNext = (i % 2) === 0
     }

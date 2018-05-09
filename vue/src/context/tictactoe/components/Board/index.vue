@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="board">
-      <div class="board-row" v-for="(v, i) in edgeLength">
+      <div class="board-row" v-for="(v, i) in edgeLength" :key="'row-' + i">
         <Square v-for="(v, j) in edgeLength"
           :key="'square-' + ((edgeLength * i) + j)"
           :value="squares[((edgeLength * i) + j)]"
