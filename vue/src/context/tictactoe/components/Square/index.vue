@@ -11,7 +11,10 @@ export default {
   name: "Square",
   props: {
     value: String,
-    highlight: Boolean
+    highlight: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>
