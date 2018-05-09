@@ -88,7 +88,7 @@ export default {
         const v = i === 0 ? [1, 1] : [(i % this.edgeLength) + 1, parseInt(i / this.edgeLength) + 1];
         return { col: v[0], row: v[1] }
       })(i);
-      this.history = this.history.concat([{
+      this.history = this.history.slice(0, (this.current + 1)).concat([{
         squares,
         tap
       }])
@@ -96,7 +96,6 @@ export default {
       this.xIsNext = !this.xIsNext
     },
     jumpTo: function(i) {
-      this.history = this.history.slice(0, (i + 1))
       this.current = i
       this.xIsNext = (i % 2) === 0
     }
