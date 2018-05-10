@@ -1,2 +1,2 @@
-# js-practice
-Repository for studying javascript 
+# react-practice
+Repository for studying React

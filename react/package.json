@@ -1,7 +1,7 @@
 {
   "name": "react",
   "version": "0.0.1",
-  "description": "React.js practice",
+  "description": "React practice",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
