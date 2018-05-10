@@ -3,7 +3,7 @@
     <div class="game-board">
       <Board
         :squares="squares"
-        @onClick="handleClick"
+        :onClick="handleClick"
       />
     </div>
     <div class="game-info">

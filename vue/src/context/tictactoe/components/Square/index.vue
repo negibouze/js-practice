@@ -1,5 +1,5 @@
 <template>
-  <button class="square" :class="{ highlight }" @click="$emit('onClick')">
+  <button class="square" :class="{ highlight }" @click="onClick">
     {{ value }}
   </button>
 </template>
@@ -14,6 +14,10 @@ export default {
     highlight: {
       type: Boolean,
       default: false
+    },
+    onClick: {
+      type: Function,
+      required: true
     }
   }
 }
