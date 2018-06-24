@@ -94,7 +94,7 @@ module.exports = (env) => {
             contentBase: build,
             publicPath: '/',
             watchContentBase: true,
-            port: 3000
+            port: 3001
         },
         optimization: {
             splitChunks: {
