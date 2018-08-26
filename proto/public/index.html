@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title>React Example</title>
+  <style>
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    .html, body {
+      width: 100vw;
+      height: 100vh;
+      min-width: 1024px;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      font-size: 62.5%;
+    }
+    body {
+      font-size: 1.4em;
+      font-family: 'メイリオ','Hiragino Kaku Gothic Pro',Meiryo,'ヒラギノ角ゴ Pro W3','MS PGothic','MS UI Gothic',Helvetica,Arial,sans-serif;
+      color: #3f3f3f;
+      background-color: transparent;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      margin: 0;
+      padding: 0;
+      font-size: 100%;
+    }
+    ul {
+      -webkit-overflow-scrolling: touch
+    }
+    button {
+      padding: 0;
+      outline: none;
+    }
+    .site-frame {
+      width: 100%;
+      height: 100%;
+    }
+    .site-frame.flex {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .site-header {
+      flex-grow: 0;
+      flex-basis: 100px;
+      width: 100%;
+      min-height: 100px;
+      background-color: #ccc
+    }
+    .site-footer {
+      flex-grow: 0;
+      flex-basis: 60px;
+      width: 100%;
+      min-height: 60px;
+      background-color: #ccc
+    }
+    .content-frame {
+      flex-grow: 1;
+      width: 100%;
+    }
+    .content-frame.flex {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+    .content-menu {
+      flex-grow: 0;
+      flex-basis: 200px;
+      background-color: #ddd;
+    }
+    .content-body {
+      flex-grow: 1;
+      background-color: #eee;
+    }
+    .no-bullet {
+      list-style:none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root" class="site-frame flex">
+    <header class="site-header">
+      ヘッダー
+    </header>
+    <div class="content-frame flex">
+      <nav class="content-menu" role="navigation">
+        <ul class="no-bullet" style="text-align:center">
+          <li style="width:100%; height:50px; line-height:50px">メニュー1</li>
+          <li style="width:100%; height:50px; line-height:50px">メニュー2</li>
+          <li style="width:100%; height:50px; line-height:50px">メニュー3</li>
+        </ul>
+      </nav>
+      <main class="content-body" role="main">
+        メイン
+      </main>
+    </div>
+    <footer class="site-footer">
+      フッター
+    </footer>
+  </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= htmlWebpackPlugin.options.googleMaps.apiKey %>&language=jp&libraries=geometry" type="text/javascript" async defer></script>
+</body>
+</html>

@@ -1,8 +1,12 @@
 /**/node_modules/
 /**/build/
-/**/public/assets/
+/**/config/
+/**/public/assets/*
+!/**/public/assets/images/
 /**/npm-debug.log
 /**/yarn.lock
 /**/yarn-error.log
+/**/__snapshots__
+/**/coverage
 .idea
 .DS_Store
